@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './../menu-item/menu-item.component';
+import MenuItem from './../menu-item/menu-item.component';
+import './directory.styles.scss';
+
 class Directory extends Component {
 
     constructor() {
         super();
-        this.setState = {
-            sections: [{
+        this.state = {
+            sections: [
+              {
                 title: 'hats',
                 imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
                 id: 1,
@@ -36,14 +40,22 @@ class Directory extends Component {
                 size: 'large',
                 id: 5,
                 linkUrl: 'shop/mens'
-              }]
+              }
+            ]
         }
     }
 
 
     render() {
-        return <div className='dierctory-menu'>
-        { this.state.}
+        return  (
+          <div className='directory-menu'>
+            {
+              this.state.sections.map(({title, imageUrl, id}) => (
+              <MenuItem key={id} title={title} imageUrl={imageUrl}/>
+              ))}
         </div>
+        );
+      }
     }
-}
+
+export default Directory;
